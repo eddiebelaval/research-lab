@@ -6,6 +6,22 @@ An autonomous, compounding research platform built on Claude Code. Submit a thes
 
 ---
 
+## Documentation: The Triad
+
+This project uses the **Triad** instead of PRDs. Three living documents that replace the traditional product requirements document:
+
+| Document | Tense | What It Answers |
+|----------|-------|-----------------|
+| [**VISION.md**](VISION.md) | Future | Where is this going? What does "done" look like? |
+| [**SPEC.md**](SPEC.md) | Present | What exists today? What works, what doesn't? |
+| [**BUILDING.md**](BUILDING.md) | Past | How did we get here? Every decision and why. |
+
+**The delta between VISION and SPEC is the roadmap.** You never need a separate roadmap document — just diff the two files. Any two documents reconstruct the third.
+
+PRDs go stale the moment code ships. The Triad stays alive because each document has a clear owner: BUILDING grows with every release, SPEC updates with every capability change, VISION evolves as understanding deepens.
+
+---
+
 ## The Problem
 
 Research sessions die when the context window closes. Findings live in chat transcripts nobody re-reads. There's no accumulation — each session starts from zero.
