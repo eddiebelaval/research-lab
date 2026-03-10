@@ -28,5 +28,12 @@
     "history": [
       { "date": "2026-03-09", "score": 12.5, "event": "Baseline measurement" }
     ]
+  },
+
+  "branches": {
+    "total": 0,
+    "active": [],
+    "merged": [],
+    "abandoned": []
   }
 }
