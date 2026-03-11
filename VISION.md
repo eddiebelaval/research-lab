@@ -36,7 +36,7 @@ The lab evaluates *arguments* but doesn't run *experiments*. A future module sho
 Track how individual findings evolve over time. Not just iteration count, but trajectory — is this finding converging toward truth or oscillating? Are refinements producing diminishing returns? Time-series visualization of finding health.
 
 ### Source Graph
-Visualize the relationship network: which findings support/contradict each other, which external sources activate which adversarial challenges, which open questions cluster around which findings. The knowledge base as a navigable graph, not just flat files.
+Visualize the relationship network: which findings support/contradict each other, which external sources activate which adversarial challenges, which open questions cluster around which findings. The knowledge base as a navigable graph, not just flat files. *Note: The DAG branching system (Mar 10) adds explicit fork/merge relationships between findings and sessions — this is the beginning of the graph structure, but the visualization layer is not yet built.*
 
 ### Automated Literature Review
 Given a new finding, automatically search academic databases (Semantic Scholar, arXiv) for supporting and contradicting work. Ingest the top hits. The lab should know what the broader field thinks, not just its own panel.
