@@ -128,6 +128,37 @@ This project uses the **Triad** documentation system instead of traditional PRDs
 
 **What was removed:** Homer real estate evaluation session (private business data). All consciousness research sessions, findings, and adversarial challenges remain — they're the working demo.
 
+### Mar 10, 2026 — DAG Branching (AgentHub-Inspired)
+
+**Trigger:** Eddie shared [Karpathy's AgentHub](https://github.com/karpathy/agenthub) — a collaboration platform for autonomous AI agents. No main branch, no PRs, no merges. Just a sprawling DAG of commits going in every direction, with a message board for coordination.
+
+**Gap analysis:** The Research Lab ran sessions sequentially — `2026-02-25-001`, then `2026-02-25-002`. Linear. But research isn't linear. When the naysayer loop devastated F-000 through F-005, each damaged finding needed multiple independent investigation threads. Testing F-000 against embodied cognition and testing F-000 against IIT are parallel hypotheses, not sequential tasks. They should fork, run independently, and reconverge only when there's something to merge.
+
+**What was built:**
+
+1. **Branch system** (`/research branch F-NNN "hypothesis"`)
+   - Forks a finding into a parallel investigation thread
+   - Branch ID: `B-NNN` (sequential)
+   - Session naming: `branch-B-NNN-YYYY-MM-DD-iter-N` (visually distinct from regular sessions)
+   - Lifecycle: ACTIVE → MERGED | ABANDONED | CONVERGED
+   - Branches can spawn sub-branches (the DAG grows)
+   - Dead ends are never deleted — they document what doesn't work
+
+2. **Branch tracker** (`knowledge/branches.md`)
+   - Tracks all branches with parent finding, hypothesis, status, sessions, timestamps
+   - Rules codified: any finding with 2+ unresolved contradictions is a branch candidate
+
+3. **Integration with compound**
+   - `/research compound` now reads all branch sessions during reconvergence
+   - Branches that strengthen the parent → MERGE
+   - Branches that disprove the parent → RETIREMENT consideration
+
+**Architecture decision:** Branches live in the filesystem (session directories + branches.md tracker), not in a separate database. This follows the lab's core principle: the knowledge base IS the system. `lab-state.json` tracks branch counts for the status dashboard.
+
+**What was NOT built:** A full AgentHub server. The patterns were extracted and implemented in existing infrastructure (filesystem + JSON state). Zero new dependencies. The lab doesn't need Go, doesn't need a message board, doesn't need API keys. It needed the DAG concept applied to its own domain.
+
+**Same session — HYDRA Agent Board:** The second AgentHub pattern (agent message board) was deployed as a HYDRA feature, not a Research Lab feature. HYDRA agents can now post findings to a shared `agent_board` table, and other agents read them. This replaced hub-and-spoke (everything through Eddie) with lateral coordination. The morning planner now reads what agents discovered overnight. First post on the board: Anna signed up for Parallax — first real customer.
+
 ---
 
 ## Patterns Discovered
@@ -148,6 +179,9 @@ Every naysayer loop, every external source ingested, every failed challenge — 
 ### Anti-Session-Death as Architecture
 Saving every intermediate result to disk isn't just crash protection — it's the architecture. The knowledge base IS the system. Conversations are just temporary interfaces to it.
 
+### DAG Over Sequence
+Linear session ordering (001, 002, 003...) creates a false sense of progression. Research branches. A finding under attack needs multiple parallel hypotheses tested simultaneously, not one after another. The DAG model (from AgentHub) made this explicit: fork, explore independently, reconverge only when there's evidence worth merging. Dead-end branches are preserved because knowing what doesn't work is itself a finding.
+
 ---
 
 ## Stats
@@ -165,4 +199,5 @@ Saving every intermediate result to disk isn't just crash protection — it's th
 | Modules | 5 (research, clinical, engineering, trading, realestate) |
 | Wings | 3 (CaF, Parallax, DeepStack) |
 | Convergence | 12.5 / 100 |
+| Branches | 0 (infrastructure built Mar 10) |
 | Refinement cycles | 0 (built, not yet run) |

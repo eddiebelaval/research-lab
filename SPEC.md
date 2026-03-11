@@ -30,6 +30,8 @@ The Research Lab is a Claude Code-native research platform. It operates as a sla
 | Status dashboard | `/research status` | Working |
 | Refine finding | `/research refine F-NNN` | Built (Mar 9, untested) |
 | Auto-refine | `/research refine --auto` | Built (Mar 9, untested) |
+| Branch finding | `/research branch F-NNN "hypothesis"` | Built (Mar 10, untested) |
+| View branches | `/research branches` | Built (Mar 10) |
 | Convergence score | `/research convergence` | Built (Mar 9, baseline calculated) |
 
 ### Modules (5)
@@ -56,6 +58,7 @@ The Research Lab is a Claude Code-native research platform. It operates as a sla
 | Contradictions | 5 (C-001 through C-005) | All OPEN |
 | Adversarial challenges | 21 (10 original + 11 from naysayer) | 5 CRITICAL, 6 HIGH |
 | External sources | 0 ingested | No external work absorbed yet |
+| Branches | 0 | Infrastructure built, none spawned yet |
 | Convergence score | 12.5 / 100 | Baseline |
 
 ---
@@ -109,6 +112,8 @@ Every phase saves to disk before proceeding. Crash recovery:
 | Refinement depth | Max 5 iterations per finding | Prevents diminishing-returns grinding |
 | Scope tiers | NARROW / FOCUSED / BROAD | Constraints breed focus (autoresearch lesson) |
 | Accept/reject signal | Binary alongside full rubric | Forces clarity; rich data for analysis, simple signal for decisions |
+| Branch exploration | DAG over linear | Findings fork into parallel hypotheses; reconverge at compound |
+| Dead-end preservation | Never delete abandoned branches | Knowing what doesn't work is itself a finding |
 
 ---
 
